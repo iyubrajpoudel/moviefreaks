@@ -58,7 +58,7 @@ const App = () => {
   return (
     <>
     <BrowserRouter>
-      <Header/>
+      {/* <Header/> */}
         <Routes>
           <Route path={`/`} element={<Home/>} />
           <Route path={`/:mediaType/:id`} element={<Details/>} />
@@ -66,7 +66,7 @@ const App = () => {
           <Route path={`/explore/:mediaType`} element={<Explore/>} />
           <Route path={`*`} element={<PageNotFound/>} />
         </Routes>
-      <Footer/>
+      {/* <Footer/> */}
     </BrowserRouter>
     </>
   )
