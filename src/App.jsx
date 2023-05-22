@@ -18,7 +18,7 @@ const App = () => {
   const home = useSelector((state) => state.home)
   // accessing state defined inside homeSlice
   const url = home.url;
-  console.log(url);
+  // console.log(url);
   console.log(url.total_pages);
 
   useEffect(()=>{
