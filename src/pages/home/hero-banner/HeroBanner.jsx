@@ -1,8 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
+// custom hook
 import useFetch from '../../../hooks/useFetch';
 //Redux
 import { useSelector } from 'react-redux'
+//  components
+import Image from './../../../components/lazy-load-image/Image';
+import ContentWrapper from './../../../components/content-wrapper/ContentWrapper';
+
+// style
+import "./HeroBanner.scss"
 
 const HeroBanner = () => {
 
@@ -48,6 +55,17 @@ const HeroBanner = () => {
   return (
     <div className="heroBanner">
       <div className="wrapper">
+        <ContentWrapper>
+        {!loading && 
+        (
+        <div className="backdrop-img">
+          <Image src={background} />
+        </div>
+        )}
+
+        {/* layer to give merging effect */}
+        <div className="opacity-layer"></div>
+
         <div className="heroBannerContent">
           <span className="title">Welcome</span>
           <span className="subTitle">Millions of Movies, TV Shows and people to discover. Explore Now!</span>
@@ -56,6 +74,7 @@ const HeroBanner = () => {
             <button>Search</button>
           </div>
         </div>
+        </ContentWrapper>
       </div>
     </div>
   )
