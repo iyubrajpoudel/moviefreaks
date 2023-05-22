@@ -20,7 +20,7 @@ import PageNotFound from './pages/page-not-found/PageNotFound';
 
 const App = () => {
 
-  /*
+  
   const dispatch = useDispatch();
   // useDispatch() is hook of redux to call actions.
 
@@ -36,10 +36,32 @@ const App = () => {
   console.log(url.total_pages);
 
   useEffect(()=>{
-    apiTesting();
+    // apiTesting();
+    fetchApiConfig();
 
   }, [])
 
+  const fetchApiConfig = () =>{
+    fetchDataFromApi(`/configuration`)
+    .then(res => {
+      console.log(res);
+
+      const imageBaseUrl = {
+        backdrop: `${res.images.secure_base_url}original`,
+        poster: `${res.images.secure_base_url}original`,
+        profile: `${res.images.secure_base_url}original`,
+      }
+
+      // calling redux action via dispatch (to store values in url state)
+      dispatch(getApiConfiguration(imageBaseUrl));
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
+
+  /*   
   const apiTesting = () =>{
     fetchDataFromApi(`/movie/popular`)
     .then(res => {
@@ -51,9 +73,8 @@ const App = () => {
     .catch(err => {
       console.log(err);
     })
-  };
-
-  */
+  }
+ */
 
   return (
     <>
