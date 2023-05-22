@@ -10,6 +10,17 @@ const App = () => {
   const dispatch = useDispatch();
   // useDispatch() is hook of redux to call actions.
 
+  // const count = useSelector((state) => state.counter.value)
+
+  //getting data from store
+
+  //getting home reducer (which store homeSlice states i.e home: homeSlice)
+  const home = useSelector((state) => state.home)
+  // accessing state defined inside homeSlice
+  const url = home.url;
+  console.log(url);
+  console.log(url.total_pages);
+
   useEffect(()=>{
     apiTesting();
 
