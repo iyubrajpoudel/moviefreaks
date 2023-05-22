@@ -32,6 +32,7 @@ const App = () => {
   const home = useSelector((state) => state.home)
   // accessing state defined inside homeSlice
   const url = home.url;
+  const imageBasePath = home.imageBasePath;
   // console.log(url);
   console.log(url.total_pages);
 
@@ -46,6 +47,13 @@ const App = () => {
     .then(res => {
       console.log(res);
 
+      /* 
+      const url = {
+        backdrop: `${res.images.secure_base_url}original`,
+        poster: `${res.images.secure_base_url}original`,
+        profile: `${res.images.secure_base_url}original`,
+      } 
+      */
       const imageBaseUrl = {
         backdrop: `${res.images.secure_base_url}original`,
         poster: `${res.images.secure_base_url}original`,
@@ -53,6 +61,7 @@ const App = () => {
       }
 
       // calling redux action via dispatch (to store values in url state)
+      // dispatch(getApiConfiguration(url));
       dispatch(getApiConfiguration(imageBaseUrl));
     })
     .catch(err => {
