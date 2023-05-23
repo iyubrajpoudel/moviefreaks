@@ -55,6 +55,12 @@ const Header = () => {
       }
     }, [lastScrollY])
 
+
+    // Restore the scroll value to top i.e (0,0) when route/location changes Since, page don't get refresh in react
+    useEffect(() => {
+      window.scrollTo(0,0);
+    }, [location])
+
     const openSearch = () => {
       setMobileMenu(false);
       setShowSearch(true);
