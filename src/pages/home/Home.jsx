@@ -8,8 +8,10 @@ const Home = () => {
     <div className="wrapper">
       <div className="container">
         <section>
-          2345
           <HeroBanner/>
+        </section>
+        <section>
+          <div className="try" style={{minHeight : `200vh`}}>gibbrish</div>
         </section>
       </div>
     </div>
